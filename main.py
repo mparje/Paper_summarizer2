@@ -8,6 +8,9 @@ from streamlit_option_menu import option_menu
 import shutil
 from pathlib import Path
 
+# Set GPT-4 API key from environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
 def extract_text_from_pdf(pdf_file_path):
     # Open the file and read its contents
     # with open(pdf_file_path, "rb") as pdf_file:
@@ -86,7 +89,7 @@ def chat_with_papers(question_input, document_text):
         {"role": "user",
          "content": f"My question is: {question_input}" + f" Please use the following research paper to help answer the question{document_text}"}
     ]
-    openai.api_key = "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"
+   
     # Generate completions
     response = openai.ChatCompletion.create(
         model='gpt-4',
