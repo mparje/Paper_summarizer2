@@ -7,6 +7,7 @@ import base64
 from streamlit_option_menu import option_menu
 import shutil
 from pathlib import Path
+import os
 
 # Set GPT-4 API key from environment variable
 openai.api_key = os.getenv("OPENAI_API_KEY")
