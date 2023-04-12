@@ -87,12 +87,12 @@ def main():
 
     with st.sidebar:
         choose = option_menu("App Gallery",
-                             ["Subir artículo", "Charlar con el artículo", "Resumir artículo"],
+                             ["Upload Paper", "Chat With Paper", "Summarize Paper"],
                              icons=['house', 'person lines fill', 'book'],
                              menu_icon="app-indicator", default_index=0,
                              styles={
                                  "container": {"padding": "5!important", "background-color": "#fafafa"},
-                                 "                                 "icon": {"color": "orange", "font-size": "25px"},
+                                 "icon": {"color": "orange", "font-size": "25px"},
                                  "nav-link": {"font-size": "16px", "text-align": "left", "margin": "0px",
                                               "--hover-color": "#eee"},
                                  "nav-link-selected": {"background-color": "#02ab21"},
