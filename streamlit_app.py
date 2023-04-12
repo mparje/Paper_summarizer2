@@ -45,7 +45,7 @@ def crear_texto(contenido_texto):
 
     prompt = [
         {"role": "system",
-         "content": "Estás recopilando información de un artículo de investigación académica para un estudiante universitario. Incluye una respuesta de 2 oraciones para cada uno de los siguientes encabezados: Resumen, Hallazgos, Brechas en la investigación, Importancia, Metodología"},
+         "content": "Eres un modelo de lenguaje IA que crea resúmenes generales o abstracts de documentos. Proporciona un resumen breve y conciso que destaque los puntos más importantes del documento."},
         {"role": "user", "content": texto_documento}
     ]
 
