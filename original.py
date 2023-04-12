@@ -86,7 +86,7 @@ def chat_with_papers(question_input, document_text):
         {"role": "user",
          "content": f"My question is: {question_input}" + f" Please use the following research paper to help answer the question{document_text}"}
     ]
-    
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     # Generate completions
     response = openai.ChatCompletion.create(
         model='gpt-4',
