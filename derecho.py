@@ -34,34 +34,30 @@ def extraer_texto_de_pdf(ruta_archivo_pdf):
 
     return texto
 
-# Function to process the uploaded file
-def create_text(text_content):
+def crear_texto(contenido_texto):
 
-    if len(text_content) > 7000*4:
-        text1 = text_content[:15000]
-        text2 = text_content[-15000:]
-        document_text = text1+text2
+    if len(contenido_texto) > 7000 * 4:
+        text1 = contenido_texto[:15000]
+        text2 = contenido_texto[-15000:]
+        texto_documento = text1 + text2
     else:
-        document_text = text_content
-    
+        texto_documento = contenido_texto
+
     prompt = [
         {"role": "system",
-         "content": "Eres un modelo de lenguaje IA que ayuda a los abogados a entender la información esencial de un documento legal. Proporciona un resumen conciso que incluya los puntos clave, las partes involucradas, las obligaciones y los derechos de cada parte."},
-        {"role": "user", "content": document_text}
+         "content": "Eres un modelo de lenguaje IA que ayuda a los abogados a entender la información esencial de un documento legal. Proporciona un resumen conciso que incluya los puntos clave, las partes involucradas, las obligaciones y los derechos de cada parte"},
+        {"role": "user", "content": texto_documento}
     ]
 
-    # Generate completions
     response = openai.ChatCompletion.create(
         model='gpt-4',
         messages=prompt,
         max_tokens=500,
         temperature=.5)
-    answers_from_gpt = response['choices'][0]['message']['content']
-    # st.write(prompt)
-    st.write(answers_from_gpt)
+    respuestas_de_gpt = response['choices'][0]['message']['content']
+    st.write(respuestas_de_gpt)
 
-    # Return the first completion
-    return answers_from_gpt
+    return respuestas_de_gpt
 
 def charla_con_documentos(entrada_pregunta, texto_documento):
 
