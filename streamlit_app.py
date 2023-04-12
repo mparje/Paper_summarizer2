@@ -34,30 +34,34 @@ def extraer_texto_de_pdf(ruta_archivo_pdf):
 
     return texto
 
-def crear_texto(contenido_texto):
+# Function to process the uploaded file
+def create_text(text_content):
 
-    if len(contenido_texto) > 7000 * 4:
-        text1 = contenido_texto[:15000]
-        text2 = contenido_texto[-15000:]
-        texto_documento = text1 + text2
+    if len(text_content) > 7000*4:
+        text1 = text_content[:15000]
+        text2 = text_content[-15000:]
+        document_text = text1+text2
     else:
-        texto_documento = contenido_texto
-
+        document_text = text_content
+    
     prompt = [
         {"role": "system",
-         "content": "Estás recopilando información de un artículo de investigación académica para un estudiante universitario. Resume para él, cuál es la tesis del autor o autoreses"},
-        {"role": "user", "content": texto_documento}
+         "content": "Eres un modelo de lenguaje IA que identifica y expone brevemente la tesis del autor o autores en documentos. Describe de manera concisa la tesis principal presentada en el documento."},
+        {"role": "user", "content": document_text}
     ]
 
+    # Generate completions
     response = openai.ChatCompletion.create(
         model='gpt-4',
         messages=prompt,
         max_tokens=500,
         temperature=.5)
-    respuestas_de_gpt = response['choices'][0]['message']['content']
-    st.write(respuestas_de_gpt)
+    answers_from_gpt = response['choices'][0]['message']['content']
+    # st.write(prompt)
+    st.write(answers_from_gpt)
 
-    return respuestas_de_gpt
+    # Return the first completion
+    return answers_from_gpt
 
 def charla_con_documentos(entrada_pregunta, texto_documento):
 
