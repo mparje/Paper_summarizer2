@@ -87,7 +87,7 @@ def main():
 
     with st.sidebar:
         choose = option_menu("App Gallery",
-                             ["Upload Paper", "Chat With Paper", "Summarize Paper"],
+                             ["Subir artículo", "Charlar con el artículo", "Resumir artículo"],
                              icons=['house', 'person lines fill', 'book'],
                              menu_icon="app-indicator", default_index=0,
                              styles={
